@@ -5,9 +5,7 @@ class Callable extends Function {
         return this._bound;
     }
 
-    _call() {
-        console.log('You called me!');
-    }
+    _call() {}
 }
 
 module.exports = Callable;
