@@ -4,3 +4,5 @@ docs/
 logo-small.png
 logo.svg
 
+# This contains our tests; the end user doesn't need them
+test/
