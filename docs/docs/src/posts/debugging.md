@@ -26,4 +26,4 @@ Sometimes, not every log is important to you. You can set the loglevel to specif
 - Silly     : Show all
 ```
 
-That's all I've got for you right now. You can add your own debugging tips to this page on [GitHub](https://github.com/eon-web/eon/blob/master/docs/debugging.md)
+That's all I've got for you right now. You can add your own debugging tips to this page on [GitHub](https://github.com/eon-web/eon/blob/master/docs/docs/src/posts/debugging.md)
