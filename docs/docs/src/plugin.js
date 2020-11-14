@@ -3,7 +3,7 @@ module.exports = ({ marked }) => {
         renderer: {
             link: (href, title, text) => {
                 if (!href.startsWith('http')) return false;
-                return `<a href="https://eon-a.herokuapp.com/offpage?target=${encodeURIComponent(href)}" title="${title}">${text}</a>`;
+                return `<a href="https://eon-a.herokuapp.com/offpage?src=${encodeURIComponent('https://eon.js.org')}}&target=${encodeURIComponent(href)}" title="${title}">${text}</a>`;
             }
         }
     });
