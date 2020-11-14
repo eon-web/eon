@@ -13,8 +13,7 @@ const config = {
     blogName: `Eon.js Docs`,
     ownerName: `Eon.js Project`,
     description: `A simple web server framework`,
-    navLinks: [
-        {
+    navLinks: [{
             href: '/',
             text: 'Home'
         },
@@ -31,6 +30,7 @@ const config = {
             text: 'Contact'
         }
     ],
+    plugins: ['plugin.js'],
     assets: './assets',
 }
 
