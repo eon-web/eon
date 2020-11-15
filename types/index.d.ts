@@ -1,4 +1,14 @@
 declare namespace eon {
+	interface CookieOptions {
+		expires: Date;
+		max_age: number;
+		path: string;
+		domain: string;
+		same_site: 'strict' | 'lax' | 'none';
+		secure: boolean;
+		HttpOnly: boolean;
+	}
+
 	class Callable extends Function {
 		constructor();
 		_call(): void;
@@ -41,6 +51,7 @@ declare namespace eon {
 		getHeader(name: string): string;
 		write(data: string): OutgoingHTTPData;
 		end(data: any): OutgoingHTTPData;
+		cookie(name: string, value: string, options: CookieOptions);
   }
 
   class TextCallbackHandler {
