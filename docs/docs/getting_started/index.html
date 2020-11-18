@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your first server | Eon.js Docs</title>
     <link rel="stylesheet" href="/index.css" />
-    <link rel="stylesheet" href="/docs/assets/prism.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
     
     
@@ -15,7 +14,14 @@
 <body>
     <header>
         <div class="left">
-            <button id="hamburger"><img src="/docs/assets/icons/menu/hamburger.svg" alt="menu"></button>
+            <button id="button-dark-mode">
+                <svg width="24" height="24" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" id="moonIcon">
+                    <path
+                        d="M17.9565 33C17.5052 33 17.0539 33 16.6026 33C8.32869 32.2462 2.3113 24.8593 3.06348 16.5678C3.66522 9.33166 9.38174 3.60302 16.6026 3C17.2043 3 17.8061 3.30151 18.107 3.75377C18.4078 4.20603 18.4078 4.9598 17.9565 5.41206C16.4522 7.37186 16.0009 9.78392 16.3017 12.196C16.6026 14.608 17.9565 16.7186 19.9122 18.0754C23.0713 20.4874 27.4339 20.4874 30.593 18.0754C31.0443 17.7739 31.6461 17.6231 32.2478 17.9246C32.6991 18.2261 33 18.8291 33 19.4322C32.6991 23.5025 30.7435 27.1206 27.5843 29.6834C24.7261 31.794 21.4165 33 17.9565 33ZM13.7443 6.46734C9.38174 7.97487 6.37304 11.8945 5.92174 16.7186C5.32 23.3518 10.1339 29.2312 16.753 29.8342C19.9122 30.1357 23.0713 29.2312 25.4783 27.1206C27.133 25.7638 28.3365 23.9548 29.0887 21.995C25.3278 23.3518 21.1157 22.7487 17.8061 20.3367C15.2487 18.3769 13.5939 15.6633 12.9922 12.4975C12.8417 10.3869 13.1426 8.42714 13.7443 6.46734Z"
+                        fill="currentColor"
+                    />
+                </svg>
+            </button>
             <img src="/docs/assets/logo-no-border.svg" alt="Logo" id="logo" />
             <nav>
                 
@@ -147,6 +153,21 @@ node_modules</code></pre><p>This is so that git doesn&#39;t upload your node_mod
         </div>
         <div class="col-right"></div>
     </main>
+
+    <script>
+        if (localStorage.getItem('dark') === 'true') {
+            document.body.classList.add('dark');
+        }
+        document.querySelector('#button-dark-mode').addEventListener('click', (e) => {
+            if (document.body.classList.contains('dark')) {
+                document.body.classList.remove('dark');
+                localStorage.setItem('dark', false);
+            } else {
+                document.body.classList.add('dark');
+                localStorage.setItem('dark', true);
+            }
+        });
+    </script>
 </body>
 
 </html>

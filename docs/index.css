@@ -2,9 +2,11 @@
   --col-blue: #1FFF93;
   --col-blue-rgb: 31, 255, 147;
   --col-teal: #1FC9FF;
-  --col-black: rgb(55, 55, 71);
+  --col-black: #373747;
   --col-bg: #FFFFFF;
   --col-fg: var(--col-black);
+  --gray-2: #edf2f6;
+  --max-contrast: #000000;
   /* Shadows */
   --shadow-blue-light: 0px 10px 20px rgba(var(--col-blue-rgb), 0.6);
   --shadow-blue-dark: 0px 10px 20px rgba(var(--col-blue-rgb), 0.2);
@@ -13,7 +15,9 @@
 
 body.dark {
   --col-bg: var(--col-black);
-  --col-fg: #FFFFFF;
+  --col-fg: #cdcdcd;
+  --gray-2: #434358;
+  --max-contrast: #ffffff;
   --shadow-blue: var(--shadow-blue-dark) ;
 }
 
@@ -31,11 +35,12 @@ body {
   width: 200vw;
   margin: 0;
   overflow-x: hidden;
+  background: var(--col-bg);
 }
 
 header {
   z-index: 100;
-  background-color: white;
+  background: var(--col-bg);
   position: fixed;
   top: 0;
   left: 0;
@@ -44,7 +49,7 @@ header {
   box-shadow: rgba(2, 8, 20, 0.06) 0px 1px 3px, rgba(2, 8, 20, 0.04) 0px 1px 2px;
   padding: 0rem 2rem;
 }
-header #hamburger {
+header #button-dark-mode {
   background: none;
   border: none;
   margin-right: 2rem;
@@ -53,7 +58,7 @@ header #hamburger {
   align-items: center;
   justify-content: center;
 }
-header #hamburger::before {
+header #button-dark-mode::before {
   content: "";
   position: absolute;
   left: 0;
@@ -70,10 +75,10 @@ header #hamburger::before {
   transition: 100ms;
   cursor: pointer;
 }
-header #hamburger:focus {
+header #button-dark-mode:focus {
   outline: none;
 }
-header #hamburger:hover::before {
+header #button-dark-mode:hover::before {
   opacity: 1;
   transform: scale(1);
 }
@@ -96,7 +101,7 @@ header nav a:hover {
   opacity: 1;
 }
 header nav a.selected {
-  color: black;
+  color: var(--max-contrast);
   opacity: 1;
 }
 header #logo {
@@ -112,7 +117,7 @@ aside {
   word-wrap: break-word;
   width: 239px;
   height: calc(100vh - 5.6rem);
-  border-right: 1px solid #edf2f6;
+  border-right: 1px solid var(--gray-2);
   padding: 3rem 2rem;
 }
 aside h3 {
@@ -131,7 +136,7 @@ aside a {
   transition: color 100ms;
 }
 aside a:hover {
-  color: black;
+  color: var(--max-contrast);
 }
 
 main {
@@ -166,7 +171,7 @@ main p.description {
 main h1,
 main h2,
 main h3 {
-  color: black;
+  color: var(--max-contrast);
   font-weight: 400;
 }
 main a {
@@ -174,4 +179,297 @@ main a {
 }
 main * {
   line-height: 1.7;
+}
+
+/* PRISM */
+body:not(.dark) main code {
+  font-size: 0.8em;
+  border-radius: 2px;
+  color: #e96900;
+  margin: 0 2px;
+  padding: 3px 5px;
+  white-space: pre-wrap;
+  font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier, monospace;
+}
+body:not(.dark) main code,
+body:not(.dark) main pre {
+  background-color: #f8f8f8;
+  font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier, monospace;
+}
+body:not(.dark) main pre {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  line-height: 1.2;
+  margin: 1.2em 0;
+  overflow: auto;
+  padding: 0 1.4rem;
+  position: relative;
+  word-wrap: normal;
+}
+body:not(.dark) .token {
+  font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier, monospace;
+}
+body:not(.dark) .token.cdata,
+body:not(.dark) .token.comment,
+body:not(.dark) .token.doctype,
+body:not(.dark) .token.prolog {
+  color: #8e908c;
+}
+body:not(.dark) .token.namespace {
+  opacity: 0.7;
+}
+body:not(.dark) .token.boolean,
+body:not(.dark) .token.number {
+  color: #c76b29;
+}
+body:not(.dark) .token.punctuation {
+  color: #525252;
+}
+body:not(.dark) .token.property {
+  color: #c08b30;
+}
+body:not(.dark) .token.tag {
+  color: #2973b7;
+}
+body:not(.dark) .token.string {
+  color: var(--theme-color, #42b983);
+}
+body:not(.dark) .token.selector {
+  color: #6679cc;
+}
+body:not(.dark) .token.attr-name {
+  color: #2973b7;
+}
+body:not(.dark) .language-css .token.string,
+body:not(.dark) .style .token.string,
+body:not(.dark) .token.entity,
+body:not(.dark) .token.url {
+  color: #22a2c9;
+}
+body:not(.dark) .token.attr-value,
+body:not(.dark) .token.control,
+body:not(.dark) .token.directive,
+body:not(.dark) .token.unit {
+  color: var(--theme-color, #42b983);
+}
+body:not(.dark) .token.function,
+body:not(.dark) .token.keyword {
+  color: #e96900;
+}
+body:not(.dark) .token.atrule,
+body:not(.dark) .token.regex,
+body:not(.dark) .token.statement {
+  color: #22a2c9;
+}
+body:not(.dark) .token.placeholder,
+body:not(.dark) .token.variable {
+  color: #3d8fd1;
+}
+body:not(.dark) .token.deleted {
+  text-decoration: line-through;
+}
+body:not(.dark) .token.inserted {
+  border-bottom: 1px dotted #202746;
+  text-decoration: none;
+}
+body:not(.dark) .token.italic {
+  font-style: italic;
+}
+body:not(.dark) .token.bold,
+body:not(.dark) .token.important {
+  font-weight: 700;
+}
+body:not(.dark) .token.important {
+  color: #c94922;
+}
+body:not(.dark) .token.entity {
+  cursor: help;
+}
+body:not(.dark) main pre > code {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  background-color: #f8f8f8;
+  border-radius: 2px;
+  color: #525252;
+  display: block;
+  font-family: Roboto Mono, Monaco, courier, monospace;
+  line-height: inherit;
+  margin: 0 2px;
+  max-width: inherit;
+  overflow: inherit;
+  padding: 2.2em 5px;
+  white-space: inherit;
+  font-size: 0.8em;
+}
+body:not(.dark) main code:after,
+body:not(.dark) main code:before {
+  letter-spacing: 0.05rem;
+}
+body:not(.dark) code .token {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  min-height: 1.5rem;
+  position: relative;
+  left: auto;
+}
+body:not(.dark) pre:after {
+  color: #ccc;
+  content: attr(data-lang);
+  font-size: 0.6em;
+  font-weight: 600;
+  height: 15px;
+  line-height: 15px;
+  padding: 5px 10px 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+}
+
+body.dark main code {
+  font-size: 0.8em;
+  border-radius: 2px;
+  color: #e96900;
+  margin: 0 2px;
+  padding: 3px 5px;
+  white-space: pre-wrap;
+  font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier, monospace;
+}
+body.dark main code,
+body.dark main pre {
+  background-color: #1e1b2c;
+  font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier, monospace;
+}
+body.dark main pre {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  line-height: 1.2;
+  margin: 1.2em 0;
+  overflow: auto;
+  padding: 0 1.4rem;
+  position: relative;
+  word-wrap: normal;
+}
+body.dark .token {
+  font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier, monospace;
+}
+body.dark .token.cdata,
+body.dark .token.comment,
+body.dark .token.doctype,
+body.dark .token.prolog {
+  color: #5e5f68;
+}
+body.dark .token.namespace {
+  opacity: 0.7;
+}
+body.dark .token.boolean,
+body.dark .token.number {
+  color: #8d1def;
+}
+body.dark .token.punctuation {
+  color: #2194cd;
+}
+body.dark .token.property {
+  color: #e5a028;
+}
+body.dark .token.tag {
+  color: #2973b7;
+}
+body.dark .token.string {
+  color: var(--theme-color, #42b983);
+}
+body.dark .token.selector {
+  color: #6679cc;
+}
+body.dark .token.attr-name {
+  color: #2973b7;
+}
+body.dark .language-css .token.string,
+body.dark .style .token.string,
+body.dark .token.entity,
+body.dark .token.url {
+  color: #22a2c9;
+}
+body.dark .token.attr-value,
+body.dark .token.control,
+body.dark .token.directive,
+body.dark .token.unit {
+  color: var(--theme-color, #42b983);
+}
+body.dark .token.function,
+body.dark .token.keyword {
+  color: #e028a0;
+}
+body.dark .token.atrule,
+body.dark .token.regex,
+body.dark .token.statement {
+  color: #22a2c9;
+}
+body.dark .token.placeholder,
+body.dark .token.variable {
+  color: #3d8fd1;
+}
+body.dark .token.deleted {
+  text-decoration: line-through;
+}
+body.dark .token.inserted {
+  border-bottom: 1px dotted #202746;
+  text-decoration: none;
+}
+body.dark .token.italic {
+  font-style: italic;
+}
+body.dark .token.bold,
+body.dark .token.important {
+  font-weight: 700;
+}
+body.dark .token.important {
+  color: #c9228e;
+}
+body.dark .token.parameter,
+body.dark .token.class-name {
+  color: #42b983;
+}
+body.dark .token.entity {
+  cursor: help;
+}
+body.dark main pre > code {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  background-color: #1e1b2c;
+  border-radius: 2px;
+  color: #cfd7de;
+  display: block;
+  font-family: Roboto Mono, Monaco, courier, monospace;
+  line-height: inherit;
+  margin: 0 2px;
+  max-width: inherit;
+  overflow: inherit;
+  padding: 2.2em 5px;
+  white-space: inherit;
+  font-size: 0.8em;
+}
+body.dark main code:after,
+body.dark main code:before {
+  letter-spacing: 0.05rem;
+}
+body.dark code .token {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  min-height: 1.5rem;
+  position: relative;
+  left: auto;
+}
+body.dark pre:after {
+  color: #ccc;
+  content: attr(data-lang);
+  font-size: 0.6em;
+  font-weight: 600;
+  height: 15px;
+  line-height: 15px;
+  padding: 5px 10px 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
 }
