@@ -1,4 +1,4 @@
-const { Pluggable, PlugEvent } = require('../../plugins');
+const { Pluggable, PlugEvent } = require('../../plugins');
 
 /**
  * This is the root pluggable for this app

@@ -21,6 +21,16 @@ class Pluggable {
     register(e, l) {
         this.events[e] = l;
     }
+
+    unbindAll() {
+        for (let event in this.events) {
+            this.unbind(event);
+        }
+    }
+
+    unbind(event) {
+        this.events[event].hooks = [];
+    }
 }
 
 module.exports = {
