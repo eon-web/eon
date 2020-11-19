@@ -31,13 +31,14 @@
         </div>
     </header>
     <aside>
-        <% const groups = posts.sort((a, b) => a.attributes.number - b.attributes.number).reduce((acc, val) => { if(!val.attributes.title) return acc; if (acc[val.attributes.group]) acc[val.attributes.group].push(val); else acc[val.attributes.group] = [val]; return acc}, {}) %>
-        <% for (let group in groups) {%>
-            <h3 class="group-name"><%= group %></h3>
-            <% groups[group].forEach(post => {%>
-                <a href="/docs/<%= post.path %> %>"><%= post.attributes.title %></a>
-            <% }) %>
-        <% } %>
+        <% posts.config.sidebar.forEach(({ type, text, href}) => { %>
+            <% if (type === 'heading') { %>
+                <h3 class="group-name"><%= text %></h3>
+            <% } %>
+            <% if (type === 'link') { %>
+                <a href="<%= href %>"><%= text %></a>
+            <% } %>
+        <% }); %>
     </aside>
     <main>
         <div class="body">
