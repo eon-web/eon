@@ -35,7 +35,14 @@ body {
   width: 200vw;
   margin: 0;
   overflow-x: hidden;
+  --sidebar-width: 0px;
   background: var(--col-bg);
+}
+body.show-aside {
+  --sidebar-width: 239px;
+}
+body.show-aside aside {
+  transform: translateX(0) !important;
 }
 
 header {
@@ -49,7 +56,7 @@ header {
   box-shadow: rgba(2, 8, 20, 0.06) 0px 1px 3px, rgba(2, 8, 20, 0.04) 0px 1px 2px;
   padding: 0rem 2rem;
 }
-header #button-dark-mode {
+header button {
   background: none;
   border: none;
   margin-right: 2rem;
@@ -58,7 +65,7 @@ header #button-dark-mode {
   align-items: center;
   justify-content: center;
 }
-header #button-dark-mode::before {
+header button::before {
   content: "";
   position: absolute;
   left: 0;
@@ -75,10 +82,10 @@ header #button-dark-mode::before {
   transition: 100ms;
   cursor: pointer;
 }
-header #button-dark-mode:focus {
+header button:focus {
   outline: none;
 }
-header #button-dark-mode:hover::before, header #button-dark-mode:focus::before {
+header button:hover::before, header button:focus::before {
   opacity: 1;
   transform: scale(1);
 }
@@ -87,6 +94,9 @@ header div.left {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+header nav {
+  display: none;
 }
 header nav a {
   transition: opacity 300ms;
@@ -108,6 +118,9 @@ header #logo {
   height: 70% !important;
   margin-right: 2rem;
 }
+header #logo img {
+  height: 100% !important;
+}
 
 aside {
   position: fixed;
@@ -119,6 +132,8 @@ aside {
   height: calc(100vh - 5.6rem);
   border-right: 1px solid var(--gray-2);
   padding: 3rem 2rem;
+  transform: translateX(-100%);
+  transition: transform 300ms;
 }
 aside h3 {
   margin-left: 1rem;
@@ -141,18 +156,19 @@ aside a:hover {
 
 main {
   position: absolute;
-  left: 239px;
+  left: var(--sidebar-width);
   top: 5.6rem;
-  width: calc(100vw - 239px);
+  width: calc(100vw - var(--sidebar-width));
   min-height: calc(100vh - 5.6rem);
   display: grid;
   grid-gap: 0;
-  grid-template-columns: 1fr clamp(300px, 100vw, 800px) 1fr;
+  grid-template-columns: 1fr clamp(300px, calc(100vw - var(--sidebar-width)), 800px) 1fr;
   font-size: 1.6rem;
 }
 main div.body {
   grid-column: 2;
   padding: 2rem 4rem;
+  max-width: 100%;
 }
 main div.body img {
   display: block;
@@ -181,6 +197,22 @@ main * {
   line-height: 1.7;
 }
 
+@media screen and (min-width: 800px) {
+  body {
+    --sidebar-width: 239px;
+  }
+  body aside {
+    transform: translateX(0) !important;
+  }
+
+  nav {
+    display: unset !important;
+  }
+
+  #hamburger {
+    display: none;
+  }
+}
 /* PRISM */
 body:not(.dark) main code {
   font-size: 0.8em;

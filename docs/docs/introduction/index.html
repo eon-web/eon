@@ -14,6 +14,13 @@
 <body>
     <header>
         <div class="left">
+            <button id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="hamburgerIcon">
+                    <path d="M3 8V6H21V8H3Z" fill="currentColor"/>
+                    <path d="M3 13H21V11H3V13Z" fill="currentColor"/>
+                    <path d="M3 18H21V16H3V18Z" fill="currentColor"/>
+                </svg>
+            </button>
             <button id="button-dark-mode">
                 <svg width="24" height="24" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" id="moonIcon">
                     <path
@@ -22,7 +29,9 @@
                     />
                 </svg>
             </button>
-            <img src="/docs/assets/logo-no-border.svg" alt="Logo" id="logo" />
+            <a href="/" id="logo">
+                <img src="/docs/assets/logo-no-border.svg" alt="Logo" />
+            </a>
             <nav>
                 
                     <a href="/" class="">Home</a>
@@ -125,6 +134,10 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
                 document.body.classList.add('dark');
                 localStorage.setItem('dark', true);
             }
+        });
+
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.body.classList.toggle('show-aside');
         });
     </script>
 </body>

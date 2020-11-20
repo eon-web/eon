@@ -15,6 +15,16 @@ body {
     margin: 0;
     overflow-x: hidden;
 
+    --sidebar-width: 0px;
+
+    &.show-aside {
+        --sidebar-width: 239px;
+
+        aside {
+            transform: translateX(0) !important;
+        }
+    }
+
     background: var(--col-bg);
 }
 
@@ -28,7 +38,8 @@ header {
     height: 5.6rem;
     box-shadow: rgba(2, 8, 20, 0.06) 0px 1px 3px, rgba(2, 8, 20, 0.04) 0px 1px 2px;
     padding: 0rem 2rem;
-    #button-dark-mode {
+    
+    button {
         background: none;
         border: none;
         margin-right: 2rem;
@@ -71,6 +82,7 @@ header {
         justify-content: flex-start;
     }
     nav {
+        display: none;
         a {
             transition: opacity 300ms;
             color: var(--col-fg);
@@ -92,6 +104,10 @@ header {
     #logo {
         height: 70% !important;
         margin-right: 2rem;
+
+        img {
+            height: 100% !important;
+        }
     }
 }
 
@@ -105,6 +121,10 @@ aside {
     height: calc(100vh - 5.6rem);
     border-right: 1px solid var(--gray-2);
     padding: 3rem 2rem;
+
+    transform: translateX(-100%);
+    transition: transform 300ms;
+
     h3 {
         margin-left: 1rem;
         font-size: 1.5rem;
@@ -127,16 +147,17 @@ aside {
 
 main {
     position: absolute;
-    left: 239px;
+    left: var(--sidebar-width);
     top: 5.6rem;
-    width: calc(100vw - 239px);
+    width: calc(100vw - var(--sidebar-width));
     min-height: calc(100vh - 5.6rem);
     display: grid;
     grid-gap: 0;
-    grid-template-columns: 1fr clamp(300px, 100vw, 800px) 1fr;
+    grid-template-columns: 1fr clamp(300px, calc(100vw - var(--sidebar-width)), 800px) 1fr;
     div.body {
         grid-column: 2;
         padding: 2rem 4rem;
+        max-width: 100%;
         img {
             display: block;
             margin: 0 auto;
@@ -164,6 +185,24 @@ main {
     }
     * {
         line-height: 1.7;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    body {
+        --sidebar-width: 239px;
+
+        aside {
+            transform: translateX(0) !important;
+        }
+    }
+
+    nav {
+        display: unset !important;
+    }
+
+    #hamburger {
+        display: none;
     }
 }
 
