@@ -78,7 +78,7 @@ header #button-dark-mode::before {
 header #button-dark-mode:focus {
   outline: none;
 }
-header #button-dark-mode:hover::before {
+header #button-dark-mode:hover::before, header #button-dark-mode:focus::before {
   opacity: 1;
   transform: scale(1);
 }

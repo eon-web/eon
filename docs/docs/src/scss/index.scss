@@ -56,7 +56,8 @@ header {
         &:focus {
             outline: none;
         }
-        &:hover {
+        &:hover,
+        &:focus {
             &::before {
                 opacity: 1;
                 transform: scale(1);
