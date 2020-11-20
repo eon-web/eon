@@ -36,9 +36,27 @@ header {
     flex-wrap: nowrap;
 
     nav {
-        display: none;
+        display: flex;
         --spacing: 5.7rem;
         font-size: 1.2rem;
+
+        width: calc(100vw - 100px);
+        box-shadow: 20px 0px 80px rgba(0,0,0,0.5);
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: var(--col-bg);
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        z-index: 1;
+        transform: translate3d(-100%, 0, 0);
+        font-size: 1.8rem;
+
+        &.shown {
+            transform: translateZ(0);
+        }
 
         a {
             position: relative;
@@ -76,6 +94,10 @@ header {
             color: var(--col-fg);
             text-decoration: none;
             margin: 1.3rem;
+        }
+
+        #hamburger {
+            z-index: 1000;
         }
     }
 }
@@ -186,8 +208,19 @@ img#blob1 {
 }
 
 @media screen and (min-width: 1000px) {
+    #hamburger {
+        display: none;
+    }
+
     nav {
         display: block !important;
+        transform: translateZ(0) !important;
+        background: unset !important;
+        box-shadow: unset !important;
+        font-size: 1.4rem !important;
+        position: unset !important;
+        height: unset !important;
+        width: unset !important;
     }
 
     div.cover {

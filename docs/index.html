@@ -41,15 +41,12 @@
 							</svg>
                     </a>
 
-                    <a href="#">
-                        <svg width="24" height="24" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" id="searchIcon">
-								<path
-									fill-rule="evenodd"
-									clip-rule="evenodd"
-									d="M21.5645 18.7153C24.0694 15.2005 23.7452 10.2894 20.5919 7.13604C17.0771 3.62132 11.3787 3.62132 7.86394 7.13604C4.34923 10.6508 4.34923 16.3492 7.86394 19.864C11.0173 23.0173 15.9284 23.3415 19.4432 20.8366L28.0165 29.4099L30.1378 27.2886L21.5645 18.7153ZM18.4705 9.25736C20.8137 11.6005 20.8137 15.3995 18.4705 17.7426C16.1274 20.0858 12.3284 20.0858 9.98526 17.7426C7.64212 15.3995 7.64212 11.6005 9.98526 9.25736C12.3284 6.91421 16.1274 6.91421 18.4705 9.25736Z"
-									fill="currentColor"
-								/>
-							</svg>
+                    <a href="#" id="hamburger">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 8V6H21V8H3Z" fill="currentColor"/>
+                            <path d="M3 13H21V11H3V13Z" fill="currentColor"/>
+                            <path d="M3 18H21V16H3V18Z" fill="currentColor"/>
+                        </svg>
                     </a>
                 </div>
             </header>
@@ -82,6 +79,10 @@
                 localStorage.setItem('dark', true);
             }
         });
+
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.querySelector('nav').classList.toggle('shown');
+        })
     </script>
 </body>
 
