@@ -38,8 +38,8 @@ class MiddlewarePlugin {
                 } else if (stack.length > 0) {
                     let n = stack.shift();
                     if (req.url.startsWith(n.path)) {
-                        let path_ = req.url.split('/');
-                        let path__ = n.path.split('/');
+                        let path_ = req.url.slice(1).split('/');
+                        let path__ = n.path.slice(1).split('/');
                         while (path_[0] === path__[0]) {
                             path_.shift();
                             path__.shift();
