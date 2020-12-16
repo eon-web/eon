@@ -6,7 +6,7 @@ declare namespace eon {
 		domain?: string;
 		same_site?: 'strict' | 'lax' | 'none';
 		secure?: boolean;
-		HttpOnly?: boolean;
+		http_only?: boolean;
 	}
 
 	class Callable extends Function {
@@ -24,7 +24,7 @@ declare namespace eon {
 		get(path: string): GETPath;
 		post(path: string): POSTPath;
 		use(path: string, callback: Function): EonWebEngine;
-		listen(callback: Function): void;
+		listen(callback: (port: number) => void): void;
   }
   
   class IncomingHTTPData {
@@ -35,8 +35,8 @@ declare namespace eon {
 		public url: string;
 		public pathname: string;
 		public query: any | undefined;
-    	public body: any | undefined;
-    	public data: any | undefined;
+		public body: any | undefined;
+		public data: any | undefined;
 		public error: Error | undefined;
 
 		constructor(req: any, noParseBody: any, engine: EonWebEngine, res: any);
