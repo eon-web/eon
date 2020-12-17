@@ -13,7 +13,7 @@ class MiddlewarePlugin {
             let handle = callback;
 
             if (typeof path !== 'string') {
-                path = '/';
+                path = '*';
                 handle = path_;
             }
 
@@ -32,6 +32,7 @@ class MiddlewarePlugin {
 
             function next(err) {
                 if (err) {
+                    log('silly', 'middleware error:', err)
                     res.statusCode = err.status || 500;
                     if (!res.writableEnded) res.end(err.message);
                     else log('warning', `middleware failed: ${err.message}`)
@@ -53,6 +54,8 @@ class MiddlewarePlugin {
                         } else {
                             next();
                         }
+                    } else if (n.path === '*') {
+                        n.handle(req, res, next);
                     } else {
                         next();
                     }
