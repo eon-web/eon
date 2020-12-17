@@ -26,7 +26,7 @@ class IncomingHTTPData {
                 this.rawBody = body;
                 if (!noParseBody && (req.method !== 'PUT')) {
                     try {
-                        if (req.headers['content-type'] === 'application/json') {
+                        if (req.headers['content-type'].split(';').map(t => t.trim()).includes('application/json')) {
                             log('info', 'request body is json');
                             this.body = JSON.parse(body || '');
                         } else {
